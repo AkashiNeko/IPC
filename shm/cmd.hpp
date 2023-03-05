@@ -1,7 +1,10 @@
 #pragma once
 
 #include <iostream>
+#include <string>
+
 #include <cstdio>
+#include <cstring>
 #include <cassert>
 #include <sys/types.h>
 #include <sys/ipc.h>

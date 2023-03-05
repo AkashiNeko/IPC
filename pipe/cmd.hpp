@@ -12,8 +12,6 @@
 
 #include "log.hpp"
 
-using namespace std;
-
 #define IPC_PATH "fifo.ipc"
 
 #define MODE 0666
