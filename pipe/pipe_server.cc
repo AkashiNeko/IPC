@@ -1,18 +1,18 @@
 #include "cmd.hpp"
 
 int main() {
-    if (mkfifo(ipcPath.c_str(), MODE) < 0) {
+    if (mkfifo(IPC_PATH, MODE) < 0) {
         perror("mkfifo");
         exit(1);
     }
     log("Create FIFO", Debug) << endl;
-    int fd = open(ipcPath.c_str(), O_RDONLY);
+    int fd = open(IPC_PATH, O_RDONLY);
     if (fd < 0) {
         perror("open");
         exit(2);
     }
     log("Open FIFO", Debug) << endl;
-    char buffer[SIZE] = {0};
+    char buffer[SIZE];
     while (true) {
         memset(buffer, 0, SIZE);
         ssize_t s = read(fd, buffer, SIZE - 1);
@@ -31,7 +31,7 @@ int main() {
     }
     close(fd);
     log("Close FIFO", Debug) << endl;
-    unlink(ipcPath.c_str());
+    unlink(IPC_PATH);
     log("Unlink FIFO", Debug) << endl;
     return 0;
 }

@@ -1,7 +1,7 @@
 #include "cmd.hpp"
 
 int main() {
-    int fd = open(ipcPath.c_str(), O_WRONLY);
+    int fd = open(IPC_PATH, O_WRONLY);
     if (fd < 0) {
         perror("open");
         exit(2);

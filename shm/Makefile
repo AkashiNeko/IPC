@@ -1,9 +1,9 @@
 .PHONY:all
-all:client server
+all:shm_client shm_server
 
-client:client.cc
+shm_client:shm_client.cc
 	g++ $^ -o ./bin/$@ -g -std=c++11
-server:server.cc
+shm_server:shm_server.cc
 	g++ $^ -o ./bin/$@ -g -std=c++11
 
 .PHONY:clean

@@ -14,7 +14,7 @@
 
 using namespace std;
 
-string ipcPath = "./fifo.ipc";
+#define IPC_PATH "fifo.ipc"
 
 #define MODE 0666
 #define SIZE 128
