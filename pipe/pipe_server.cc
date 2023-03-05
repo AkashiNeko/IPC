@@ -17,7 +17,7 @@ int main() {
         memset(buffer, 0, SIZE);
         ssize_t s = read(fd, buffer, SIZE - 1);
         if (s > 0) {
-            std::cout << "Receive: " << buffer << std::endl;
+            log("Receive", Notice) << "Message: " << buffer << endl;
         }
         else if (s == 0) {
             // End Of File
