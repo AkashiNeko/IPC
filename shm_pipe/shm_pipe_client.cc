@@ -24,22 +24,22 @@ int main() {
 
     // -------------------- communication ----------------------
 
-    int* p = (int*)shmaddr;
-    int& flag = *p;
-    char* msg = (char*)((char*)shmaddr + sizeof(int));
+    char* msg = (char*)shmaddr;
+
+    int fd = openFIFO(WRITE);
+
     while (true) {
-        std::cout << "Send Message: ";
+        std::cout << " | Send Message: ";
         std::string s;
         std::getline(std::cin, s);
-        if (s.empty()) {
+        if (s.empty())
             continue;
-        }
-        if (s.size() >= SHM_SIZE - sizeof(int)) {
+        if (s.size() > SHM_SIZE - 1) {
             log("Message is too long", Error) << "Length: " << s.size() << std::endl;
             continue;
         }
         strcpy(msg, s.c_str());
-        flag = 1;
+        signal(fd);
         if (strcmp(msg, "quit") == 0) {
             log("Quit", Notice) << "Client quit" << std::endl;
             break;
