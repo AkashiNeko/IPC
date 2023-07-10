@@ -25,7 +25,7 @@ int main() {
     void* shmaddr = shmat(shmid, nullptr, 0);
     log("attach shm done", Debug) << "shmid: " << shmid << std::endl;
 
-    // -------------------- communication ----------------------
+    // --------------------- communication ---------------------
 
     memset(shmaddr, 0, SHM_SIZE);
     int* p = (int*)shmaddr;

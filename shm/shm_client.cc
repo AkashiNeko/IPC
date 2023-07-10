@@ -31,18 +31,16 @@ int main() {
         std::cout << "Send Message: ";
         std::string s;
         std::getline(std::cin, s);
-        if (s.empty()) {
-            continue;
-        }
         if (s.size() >= SHM_SIZE - sizeof(int)) {
             log("Message is too long", Error) << "Length: " << s.size() << std::endl;
             continue;
-        }
-        strcpy(msg, s.c_str());
-        flag = 1;
-        if (strcmp(msg, "quit") == 0) {
-            log("Quit", Notice) << "Client quit" << std::endl;
-            break;
+        } else if (!s.empty()) {
+            strcpy(msg, s.c_str());
+            flag = 1;
+            if (strcmp(msg, "quit") == 0) {
+                log("Quit", Notice) << "Client quit" << std::endl;
+                break;
+            }
         }
     }
 
